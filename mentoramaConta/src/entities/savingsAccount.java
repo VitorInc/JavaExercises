@@ -42,11 +42,22 @@ public class savingsAccount extends Account
             return this.saldo + this.taxsFee * saldo;
         }
 
+
+        public void saque(double saqueValor){
+        if(saqueValor <= this.saldo){
+            this.saldo -= saqueValor;
+            System.out.println("The balance is R$:" + String.format("%.2f", this.getSaldo()));
+        }
+    }
+    public String ballanceAcc() {
+        return "\n Ballance in yout acc is: R$" + this.getSaldo();
+    }
+
     @Override
     public String toString() {
-        return "savingsAccount:" +
+        return "savingsAccount:"     +
                 "taxsFee=" + taxsFee +
-                ", Birth=" + Birth +
+                ", Birth=" + Birth   +
                 ", saldo=" + String.format("%.2f", saldo) +
                 '.';
     }
