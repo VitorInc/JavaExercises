@@ -8,29 +8,24 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Program {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            System.out.println("Digite o número da reserva");
 
-        System.out.println("Digite o número da reserva");
+            int numero = in.nextInt();
 
-        int numero = in.nextInt();
+            System.out.println("Digit data de check in:");
 
-        System.out.println("Digit data de check in:");
+            Date checkIn = sdf.parse(in.next());
 
-        Date checkIn = sdf.parse(in.next());
+            System.out.println("Digite data de check out:");
 
-        System.out.println("Digite data de check out:");
+            Date checkOut = sdf.parse(in.next());
 
-        Date checkOut = sdf.parse(in.next());
-
-        if(!checkOut.after(checkIn)){
-
-            System.out.println("Inválido");
-
-        } else{
             Reserva reserva = new Reserva(numero, checkIn,checkOut);
 
             System.out.println(reserva);
@@ -47,22 +42,16 @@ public class Program {
 
             checkOut = sdf.parse(in.next());
 
-            Date now = new Date();
-            if(checkIn.before(now) || checkOut.before(now)){
-                System.out.println("Error");
+            reserva.updateDates(checkIn,checkOut);
+            System.out.println(reserva);
 
-            }
-
-            else if(!checkOut.after(checkIn)) {
-                System.out.println("Error");
-            }
-            else {
-
-                reserva.updateDates(checkIn, checkOut);
-
-                System.out.println(reserva);
-            }
         }
-        in.close();
+            catch (ParseException e) {
+                System.out.println("erro");
+        }
+            catch (IllegalArgumentException e) {
+                System.out.println("erro");
+        }
+
     }
 }
