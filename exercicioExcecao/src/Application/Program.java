@@ -1,6 +1,7 @@
 package Application;
 
-import entities.Reserva;
+import modelEntities.Reserva;
+import modelException.DomainException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,9 +50,12 @@ public class Program {
             catch (ParseException e) {
                 System.out.println("erro");
         }
-            catch (IllegalArgumentException e) {
-                System.out.println("erro");
+            catch (DomainException e) {
+                System.out.println("erro" + e.getMessage());
         }
-
+            catch (RuntimeException e) {
+                System.out.println("ERROR");
+        }
+        in.close();
     }
 }

@@ -1,4 +1,6 @@
-package entities;
+package modelEntities;
+
+import modelException.DomainException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +15,13 @@ public class Reserva {
 
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public Reserva(Integer roomNumber, Date checkIn, Date checkOut) {
+    public Reserva(Integer roomNumber, Date checkIn, Date checkOut)  {
+
+
+        if (!checkOut.after(checkIn)) {
+            throw new DomainException("Error");
+        }
+
         this.roomNumber = roomNumber;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
@@ -43,13 +51,14 @@ public class Reserva {
     public void updateDates(Date checkIn, Date checkOut)  {
 
         Date now = new Date();
-        if (checkIn.before(now) || checkOut.before(now)) {
-            throw new IllegalArgumentException("Error");
-        }
+
         if (!checkOut.after(checkIn)) {
-            throw new IllegalArgumentException("Error");
+            throw new DomainException("Error");
         }
 
+        if (checkIn.before(now) || checkOut.before(now)) {
+              throw new DomainException("Error");
+        }
         this.checkIn = checkIn;
         this.checkOut = checkOut;
 
