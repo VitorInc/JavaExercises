@@ -2,8 +2,8 @@ package Application;
 
 import entities.Account;
 import entities.CheckingAccount;
-import entities.salaryAccount;
-import entities.savingsAccount;
+import entities.SalaryAccount;
+import entities.SavingAccount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Program
             if(type == 'C')
             {
                 System.out.println("Digit the name of the bank");
-                String Bank = sc.next();
+                String bank = sc.next();
                 System.out.println("Please provide the agency:");
                 Integer agencyNmbr = sc.nextInt();
                 System.out.println("Please provide the account number:");
@@ -37,7 +37,7 @@ public class Program
                 Double accBalance = sc.nextDouble();
                 System.out.println("Please informe the overdraft");
                 Double accOverDraft = sc.nextDouble();
-                CheckingAccount contaCorrente = new CheckingAccount(Bank,agencyNmbr,accNmbr,accBalance,accOverDraft);
+                CheckingAccount contaCorrente = new CheckingAccount(bank,agencyNmbr,accNmbr,accBalance,accOverDraft);
                 contas.add(contaCorrente);
                 System.out.println(contaCorrente);
 
@@ -45,7 +45,7 @@ public class Program
             else if(type == 'S')
             {
                 System.out.println("Digit the name of the bank");
-                String Bank = sc.next();
+                String bank = sc.next();
                 System.out.println("Please provide the agency:");
                 Integer agencyNmbr = sc.nextInt();
                 System.out.println("Please provide the account number:");
@@ -56,7 +56,7 @@ public class Program
                 Double accFee = sc.nextDouble();
                 System.out.println("Digit the owner BirthDate");
                 Integer ownerBirth = sc.nextInt();
-                savingsAccount contaPopuanca = new savingsAccount(Bank,agencyNmbr,accNmbr,accBalance,accFee,ownerBirth);
+                SavingAccount contaPopuanca = new SavingAccount(bank,agencyNmbr,accNmbr,accBalance,accFee,ownerBirth);
                 contas.add(contaPopuanca);
                 System.out.println(contaPopuanca);
             }
@@ -64,7 +64,7 @@ public class Program
             else if(type == 'A')
             {
                 System.out.println("Digit the name of the bank");
-                String Bank = sc.next();
+                String bank = sc.next();
                 System.out.println("Please provide the agency:");
                 Integer agencyNmbr = sc.nextInt();
                 System.out.println("Please provide the account number:");
@@ -75,7 +75,7 @@ public class Program
                 Integer accWithDraw = sc.nextInt();
                 System.out.println("The amount of your withDraw");
                 Integer amountWithDraw = sc.nextInt();
-                salaryAccount contaSalario = new salaryAccount(Bank,agencyNmbr,accNmbr,accBalance,accWithDraw,amountWithDraw);
+                SalaryAccount contaSalario = new SalaryAccount(bank,agencyNmbr,accNmbr,accBalance,accWithDraw,amountWithDraw);
                 contas.add(contaSalario);
                 System.out.println(contaSalario);
 

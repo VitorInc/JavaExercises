@@ -38,11 +38,11 @@ private double overdraft;
 
 
     public void withDraw(double amountWithDraw){
-        if(VerifyamountWithOutOverDraft(amountWithDraw)){
-            WithOutOverDraft(amountWithDraw);
+        if(verifyamountWithOutOverDraft(amountWithDraw)){
+            withOutOverDraft(amountWithDraw);
             System.out.println("Without over draft, R$:" + String.format("%.2f", this.getSaldo()));
         }
-        else if (VerifyamountWithOverDraft(amountWithDraw)){
+        else if (verifyamountWithOverDraft(amountWithDraw)){
             amountWithOverDraft(amountWithDraw);
             System.out.println("With overdraft, R$:" + String.format("%.2f", this.getSaldo()));
         }
@@ -60,16 +60,16 @@ private double overdraft;
     }
 
 
-    private void WithOutOverDraft(double amountWithDraw){
+    private void withOutOverDraft(double amountWithDraw){
         this.saldo -= amountWithDraw;
     }
 
-    private boolean VerifyamountWithOverDraft (double VerifyValluer){
-        return VerifyValluer <= this.getSaldo();
+    private boolean verifyamountWithOverDraft (double verifyValluer){
+        return verifyValluer <= this.getSaldo();
     }
 
-    private boolean VerifyamountWithOutOverDraft (double VerifyValluer){
-        return VerifyValluer <= this.getSaldo() - this.overdraft;
+    private boolean verifyamountWithOutOverDraft (double verifyValluer){
+        return verifyValluer <= this.getSaldo() - this.overdraft;
     }
 
 
